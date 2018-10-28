@@ -61,7 +61,7 @@ def Downloader(name):
     result = requests.get(name)
     filetext = result.text
     if 'Error 404' in filetext:
-        return False
+        return False, False
     text = PlainText(filetext)
     text = BasicInfo(filetext, name) + text
     return text, filetext
