@@ -50,9 +50,9 @@ def MakeTable(file_text, path, url, raw_text):
     soup = BeautifulSoup(file_text, 'html5lib')
     header = soup.find(property="og:title").get('content')
     created = Standart(soup.select('.lcol .date')[0].get_text())
-    sphere = soup.select('.date-catalog .catalog')[0].get_text()
+    topic = soup.select('.date-catalog .catalog')[0].get_text()
     year, m = Year(raw_text)
-    s = [path, 'Noname', header, created, sphere, 'нейтральный', "н-возраст", "н-уровень", "районная", url, 'Ивановская газета', year, "газета", "Россия", 'Ивановкая область', "ru"]
+    s = [path, 'Noname', header, created, "публицистика", topic, 'нейтральный', "н-возраст", "н-уровень", "районная", url, 'Ивановская газета', year, "газета", "Россия", 'Ивановкая область', "ru"]
     table.append(s)
 
 
@@ -69,7 +69,7 @@ def Downloader(name):
 
 def DownloadFrom():
     link = 'http://ivgazeta.ru/read/'
-    for num in range(20, 4000):
+    for num in range(20, 900):
         raw_text, file_text = Downloader(link + str(num))
         if raw_text:
             year, month = Year(raw_text)
@@ -83,15 +83,15 @@ def DownloadFrom():
 
 def CreateDirs():
     os.mkdir(DIR)
-    os.mkdir(DIR + '/html')
+    os.mkdir(DIR + '/plain')
 
 
 def CreateTable():
-    table = [['path', 'author', 'sex', 'birthday', 'created', 'sphere', 'genre_fi', 'type', 'topic', 'chronotop', 'style', 'audience_age', 'audience_level', 'audience_size', 'source', 'publication', 'publisher', 'publ_year', 'medium', 'country', 'region', 'language']]
+    table = [['path', 'author', 'header', 'created', 'sphere', 'topic', 'style', 'audience_age', 'audience_level', 'audience_size', 'source', 'publication', 'publ_year', 'medium', 'country', 'region', 'language']]
     return table
 
 DIR = 'газета'
-DIR1 = 'html'
+DIR1 = 'plain'
 table = CreateTable()
 DownloadFrom()
 with open(DIR + '/' + 'metadata.csv', 'w', encoding='utf-8') as file:
