@@ -20,7 +20,22 @@ def info():
     s = place + ';' + age + ';' + ans + '\n'
     file.write(s)
     file.close()
+    file = open('data.json', 'r', encoding='utf-8')
+    data = json.load(file)
+    file.close()
+    data[ans].append({'place':place, 'age':age})
+    file = open('data.json', 'w', encoding='utf-8')
+    json.dump(data, file, sort_keys=True, indent=2, ensure_ascii=False)
     return '<p><a href="http://127.0.0.1:5000/"> Вернуться на главную страницу </a><br><a href="http://127.0.0.1:5000/stats"> Посмотреть статистику </a></p>'
+
+
+@app.route('/json')
+def bprint():
+    file = open('data.json', 'r', encoding='utf-8')
+    data = json.load(file)
+    s = json.dumps(data, sort_keys=True, indent=2, ensure_ascii=False)
+    file.close()
+    return s
 
 @app.route('/stats')
 def stats():
@@ -45,6 +60,5 @@ def stats():
     for i in alts2:
         s += i + ': ' + ', '.join(list(alts2[i])) + '<br>'
     return s
-
 
 app.run(debug='True')
