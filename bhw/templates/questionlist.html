@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title> Опрос </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <form action="/info" method="post">
+      <div class="form-group">
+        <label for="place">Город, в котором вы учились в школе </label>
+        <textarea class="form-control" id="place" rows="1" placeholder="Москва" name="place"></textarea>
+      </div>
+        <div class="form-group">
+        <label for="age">Ваш возраст</label>
+        <textarea class="form-control" id="age" rows="1" placeholder="12" name="age"></textarea>
+      </div>
+
+    <div class="form-group">
+        <label for="place"> А как вы называли эту канцелярскую принадлежность? </label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="eraser" id="eraser1" value="ластик">
+          <label class="form-check-label" for="eraser1">
+            ластик
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <input class="form-check-input" type="radio" name="eraser" id="eraser2" value="резинка">
+          <label class="form-check-label" for="eraser2">
+            резинка
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="eraser" id="eraser3" value="стёрка">
+          <label class="form-check-label" for="eraser3">
+            стёрка
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="eraser" id="eraser4" value="стирка">
+          <label class="form-check-label" for="eraser4">
+            стёрка
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <input class="form-check-input" type="radio" name="eraser" id="eraser5" value="стиралка">
+          <label class="form-check-label" for="eraser5">
+            стиралка
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <input class="form-check-input" type="radio" name="eraser" id="eraser6" value="стирачка">
+          <label class="form-check-label" for="eraser6">
+            стирачка
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <input class="form-check-input" type="radio" name="eraser" id="eraser7" value="другое">
+          <label class="form-check-label" for="eraser7">
+            другое
+          </label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>
