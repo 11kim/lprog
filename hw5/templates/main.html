@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title> Поисковик </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <form action="/" method="get">
+      <div class="form-group">
+        <label for="ask"> Введите ваш запрос </label>
+        <textarea class="form-control" id="ask" rows="1" placeholder="введите слово или фразу" name="ask"></textarea>
+      </div>
+
+        <button type="submit" class="btn btn-primary">Искать!</button>
+    </form>
+
+    {% for i in arr %}
+        <p>
+        <a href={{i[1]}}>{{i[0]}}</a> <br>
+            {{i[2]}} </p>
+    {% endfor %}
+
+</body>
+</html>
