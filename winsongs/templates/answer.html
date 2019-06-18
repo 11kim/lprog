@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title> Результаты! </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<ul>
+    {% for i in res%}
+        <li>
+            <a href={{i[0]}}>{{i[1]}}</a>
+            <p>Автор текста: {{i[2]}}<br>
+            Источник: {{i[3]}}</p>
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="./">Домой!</a>
+</body>
+</html>
