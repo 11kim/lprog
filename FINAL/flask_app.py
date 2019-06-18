@@ -3,6 +3,7 @@ from flask import render_template
 from pymystem3 import Mystem
 import re
 import sqlite3
+import os.path
 
 app = Flask(__name__)
 
@@ -16,12 +17,16 @@ def info():
     word = request.form['word'].lower()
     if word == '':
         return 'Задан пустой поисковый запрос'
-    if not (re.match('[а-яё\- ]', word)):
-        return 'Некорректный ввод'
+    if not (re.fullmatch('[а-яё ]+', word) or re.fullmatch('[а-яё]+\-[а-яё]+', word)):
+        return 'Некорректный ввод <br><a href="./">Домой!</a>'
     m = Mystem()
     lexword = m.lemmatize(word)[0]
 
-    conn = sqlite3.connect('songs.db')
+
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    db_path = os.path.join(BASE_DIR, "songs.db")
+    conn = sqlite3.connect(db_path)
     c = conn.cursor()
     x = '"% ' + lexword + ' %"'
     x1 = '"' + lexword + ' %"'
@@ -39,21 +44,22 @@ def info():
         if not source:
             source = 'Концерты'
         if author == 'дуэт':
-            author = 'точно не ясно'
+            author = 'точно не ясно, но точно кто-то из них, а может, оба'
         res.append(("song/" + str(id), name, author, source))
 
 
     conn.commit()
     conn.close()
     if not res:
-        return 'Таких слов не обнаружено'
+        return 'Таких слов не обнаружено <br><a href="./">Домой!</a>'
     return render_template('answer.html', res=res)
-    #return '<a href="song/Родословная">Родословная</a>'
 
 
 @app.route('/song/<id>')
 def song(id):
-    conn = sqlite3.connect('songs.db')
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    db_path = os.path.join(BASE_DIR, "songs.db")
+    conn = sqlite3.connect(db_path)
     c = conn.cursor()
     c.execute('SELECT name FROM TEXTS WHERE id={}'.format(id))
     name = c.fetchone()[0]
