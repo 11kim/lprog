@@ -10,6 +10,6 @@
   <tr> <td>4</td> <td>Homework4</td> <td>https://github.com/11kim/lprog/tree/master/bhw</td> </tr>
   <tr> <td>5</td> <td>Homework5</td> <td>https://github.com/11kim/lprog/tree/master/hw5</td> </tr>
   <tr> <td>6</td> <td>домашка по word2vec</td> <td>https://github.com/11kim/lprog/tree/master/dz</td> </tr>
-  <tr> <td>7</td> <td>ИТОГОВЫЙ ПРОЕКТ</td> <td> </td> </tr>
+  <tr> <td>7</td> <td>ИТОГОВЫЙ ПРОЕКТ</td> <td> http://kim11.pythonanywhere.com </td> </tr>
 </table>
 
